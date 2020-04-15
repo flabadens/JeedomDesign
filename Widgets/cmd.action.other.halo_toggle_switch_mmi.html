@@ -2,7 +2,7 @@
   Widget name : halo_toggle_switch_mmi
   Author : geqr
   Website : www.ma-maison-intelligente.fr
-  Tutorial : http://ma-maison-intelligente.fr/2020/04/bouton-halo-pour-votre-design-jeedom/
+  Tutorial :
   Last Update : 20200414 - creation
  -->
 
@@ -19,6 +19,13 @@
 </div>
 
 <style type="text/css">
+
+  :root {
+  		--color_on_light_hex: #89c2da;
+  		--color_on_dark_hex: #4b7a8d;
+    	--color_on_light_rgb:137, 194, 217;
+  	}
+
 #switch-#id#{
     width: 75px;
     height: 40px;
@@ -34,7 +41,7 @@
 }
 
 .toggle.toggle-on{
-    border-color: rgba(137, 194, 217, .4);
+    border-color: rgba(var(--color_on_light_rgb), .4);
     -webkit-transition: all .5s .15s ease-out;
     transition: all .5s .15s ease-out;
 }
@@ -58,8 +65,8 @@
     bottom: 3px;
     right: 3px;
     border-radius: 23px;
-    background-color: #89c2da;
-    box-shadow: 0 0 16px #4b7a8d;
+    background-color: var(--color_on_light_hex);
+    box-shadow: 0 0 16px var(--color_on_dark_hex);
     -webkit-transition: all .2s .1s, right .1s;
     transition: all .2s .1s, right .1s;
 }
@@ -86,7 +93,7 @@
 }
 
 .toggle-on .toggle-text-on{
-    color: #3b6a7d;
+    color: var(--color_on_dark_hex);
     -webkit-transition: color .3s .15s ;
     transition: color .3s .15s ;
 }
@@ -123,8 +130,8 @@
     left: 10px;
     right: 10px;
     border-radius: 6px;
-    background-color: rgba(75, 122, 141, .1);
-    box-shadow: 0 0 12px rgba(75, 122, 141, .2);
+    background-color: rgba(var(--color_on_light_rgb), .1);
+    box-shadow: 0 0 12px rgba(var(--color_on_light_rgb), .2);
     -webkit-transition: opacity 4.5s 1s;
     transition: opacity 4.5s 1s;
 }
