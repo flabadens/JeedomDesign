@@ -1,0 +1,126 @@
+.menu-container {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  box-sizing: border-box;
+}
+
+.menu-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #333333;
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  right: 0;
+  display: table;
+  text-align: center;
+}
+.menu-toggle .fa {
+  color: #fff;
+  font-size: 2em;
+  display: table-cell;
+  vertical-align: middle;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.menu-toggle.open .fa {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.btn-app {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border-color: #ffffff;
+  position: absolute;
+  background-color: #4e4e4e;
+  color: #fff;
+  text-align: center;
+}
+
+.btn-app a {
+  color: #ffffff;
+}
+
+.btn-app .fa {
+  line-height: 2.5em;
+}
+
+.open .btn-app {
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.menu-round {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  z-index: 3;
+}
+.menu-round .btn-app {
+  bottom: 0.25em;
+  right: 0.25em;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.menu-round.open .btn-app:nth-of-type(1) {
+  right: 0.5em;
+  bottom: 4.55em;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+.menu-round.open .btn-app:nth-of-type(2) {
+  right: 3.5em;
+  bottom: 3.5em;
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+.menu-round.open .btn-app:nth-of-type(3) {
+  right: 4.55em;
+  bottom: 0.5em;
+}
+
+.menu-line {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  z-index: 2;
+}
+.menu-line .btn-app {
+  bottom: 0;
+  right: 0.5em;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+.menu-line.open .btn-app:nth-of-type(1) {
+  bottom: 4.45em;
+}
+.menu-line.open .btn-app:nth-of-type(1) {
+  bottom: 7.45em;
+}
+.menu-line.open .btn-app:nth-of-type(2) {
+  bottom: 10.45em;
+}
+.menu-line.open .btn-app:nth-of-type(3) {
+  bottom: 13.45em;
+}
+.menu-line.open .btn-app:nth-of-type(4) {
+  bottom: 16.45em;
+}
+.menu-line.open .btn-app:nth-of-type(5) {
+  bottom: 19.45em;
+}
+.menu-line.open .btn-app:nth-of-type(6) {
+  bottom: 22.45em;
+}
+.menu-line.open .btn-app:nth-of-type(7) {
+  bottom: 25.45em;
+}
+.menu-line.open .btn-app:nth-of-type(8) {
+  bottom: 28.45em;
+}
