@@ -16,6 +16,14 @@
 </div>
 
 <style>
+
+    :root {
+  		--color_btn_hex: #5a99d4;
+      	--color_btn_rgb: 35,60,83;
+  		--color_text: white;
+    	--size_btn:100px;
+  	}
+
 .pulse-container {
   width: 200px;
   height: 100%;
@@ -26,21 +34,21 @@
 
 .pulse-button {
   display: block;
-  width: 100px;
-  height: 100px;
+  width: var(--size_btn);
+  height: var(--size_btn);
   font-size: 1.3em;
   font-weight: light;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   text-align: center;
-  line-height: 100px;
+  line-height: var(--size_btn);
   letter-spacing: -1px;
-  color: white;
+  color: var(--color_text);
   border: none;
   border-radius: 50%;
-  background: #5a99d4; /*Color to change*/
+  background: var(--color_btn_hex);
   cursor: pointer;
-  box-shadow: 0 0 0 0 rgba(90, 153, 212, 0.5); /*Color to change in rgb*/
+  box-shadow: 0 0 0 0 rgba(var(--color_btn_rgb), 0.5); /*Color to change in rgb*/
   -webkit-animation: pulse 1.5s infinite;
 }
 
@@ -60,14 +68,14 @@
     -ms-transform: scale(1);
     -webkit-transform: scale(1);
     transform: scale(1);
-    box-shadow: 0 0 0 50px rgba(90, 153, 212, 0); /*Color to change in rgb*/
+    box-shadow: 0 0 0 50px rgba(var(--color_btn_rgb), 0);
   }
   100% {
     -moz-transform: scale(0.9);
     -ms-transform: scale(0.9);
     -webkit-transform: scale(0.9);
     transform: scale(0.9);
-    box-shadow: 0 0 0 0 rgba(90, 153, 212, 0); /*Color to change in rgb*/
+    box-shadow: 0 0 0 0 rgba(var(--color_btn_rgb), 0);
   }
 }
 </style>

@@ -1,0 +1,93 @@
+<div class="cmd cmd-widget #history#" data-type="info" data-subtype="numeric" data-template="badge" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
+  <div class="widget-container">
+    <div class="battery">
+         <div class="juice"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+	background-color:black;
+  }
+
+  :root {
+      --juice_alert_color: red;
+      --juice_inter_color: orange;
+      --juice_ok_color:green;
+      --battery_background:white;
+      --widget_width:40px;
+	  --widget_height:20px;
+    }
+
+  .widget-container{
+  	width: calc(var(--widget_width) + 20px);
+    display:block;
+    padding:0px;
+    position:relative;
+  }
+
+  .battery{
+    width: var(--widget_width);
+    height: var(--widget_height);
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 4px;
+    box-sizing: border-box;
+  }
+  .battery:after{
+    content: ' ';
+    background: var(--battery_background);
+    width: 5px;
+    height: calc(var(--widget_height) /2);
+    position: absolute;
+    right: 5px;
+    border-radius: 0px 2px 2px 0px;
+    top: 24%;
+  }
+  .juice{
+    height:100%;
+    float: left;
+  }
+
+  .juice-alert {
+    background:var(--juice_alert_color);
+    animation: blinky 1s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .juice-inter {
+    background:var(--juice_inter_color);
+  }
+
+  .juice-ok {
+    background:var(--juice_ok_color);
+  }
+
+  @keyframes blinky {
+    0% {background:transparent;}
+    49% {background:transparent;}
+    50% {background:var(--juice_alert_color);}
+  }
+</style>
+<script>
+  jeedom.cmd.update['#id#'] = function(_options) {
+    var cmd = $('.cmd[data-cmd_id=#id#]');
+    var percentage_value = _options.display_value;
+
+    cmd.find('.juice').attr('style', 'width:' + (percentage_value == 0 ? '5' : percentage_value) + '%;');
+
+    if (percentage_value >=0 && percentage_value<=20){
+    	cmd.find('.juice').removeClass('juice-ok juice-inter');
+      	cmd.find('.juice').addClass('juice-alert');
+    } else if (percentage_value >=21 && percentage_value<=59){
+      	cmd.find('.juice').removeClass('juice-ok juice-alert');
+      	cmd.find('.juice').addClass('juice-inter');
+    } else {
+    	cmd.find('.juice').removeClass('juice-inter juice-alert');
+      	cmd.find('.juice').addClass('juice-ok');
+    }
+  }
+
+  jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+</script>
