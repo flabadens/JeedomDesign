@@ -3,18 +3,24 @@
   Author : geqr
   Website : www.ma-maison-intelligente.fr
   Tutorial :
-  Last Update : 20200415 - creation
+  Last Update : 20200416 - creation
  -->
 <style>
+
+    :root {
+  		--color_backgound:black;
+    	--size_btn:6px;
+  	}
+
 .switch-container {
 	font-family: arial, verdana, sans-serif;
-	background: #1E1E20;
+	background: var(--color_backgound);
 	text-align: center;
 }
 
 .switch {
 	display: inline-block;
-  	font-size: 8px !important;
+  	font-size: var(--size_btn) !important;
 	margin: 10em 2em;
 	position: relative;
 	border-radius: 3.5em;
@@ -395,7 +401,7 @@
       <span class="switch-border1">
           <span class="switch-border2">
               <input id="Switch-input#id#" type="checkbox"
-                     onClick="console.log('click'); jeedom.cmd.execute({id: '#id#'});" />
+                     onClick="jeedom.cmd.execute({id: '#id#'});" />
               <label for="Switch-input#id#"></label>
               <span class="switch-top"></span>
               <span class="switch-shadow"></span>
