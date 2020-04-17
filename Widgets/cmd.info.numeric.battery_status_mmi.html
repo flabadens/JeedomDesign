@@ -1,3 +1,12 @@
+<!--
+  Widget name : battery_status_mmi
+  Author : geqr
+  Website : www.ma-maison-intelligente.fr
+  Tutorial : //TODO
+  Inspiration : https://codepen.io/dropside/pen/qjDmb
+  Last Update : 20200414 - creation
+ -->
+
 <div class="cmd cmd-widget #history#" data-type="info" data-subtype="numeric" data-template="badge" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
   <div class="widget-container">
     <div class="battery">
@@ -15,10 +24,10 @@
       --juice_alert_color: red;
       --juice_inter_color: orange;
       --juice_ok_color:green;
-      --battery_background:white;
-      --widget_width:40px;
-	    --widget_height:20px;
-    }
+      --battery_color:grey;
+      --widget_width:60px;
+	    --widget_height:30px;
+  }
 
   .widget-container{
   	width: calc(var(--widget_width) + 20px);
@@ -30,14 +39,14 @@
   .battery{
     width: var(--widget_width);
     height: var(--widget_height);
-    border: 2px solid white;
+    border: 2px solid var(--battery_color);
     border-radius: 5px;
     padding: 4px;
     box-sizing: border-box;
   }
   .battery:after{
     content: ' ';
-    background: var(--battery_background);
+    background: var(--battery_color);
     width: 5px;
     height: calc(var(--widget_height) /2);
     position: absolute;
