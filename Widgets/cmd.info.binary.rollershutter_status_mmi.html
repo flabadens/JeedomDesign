@@ -1,0 +1,136 @@
+<!--
+  Widget name : rollershutter_status_mmi
+  Author : geqr
+  Website : www.ma-maison-intelligente.fr
+  Tutorial :
+  Inspiration : https://codepen.io/Barrydreamt/pen/MZEMRO
+  Last Update : 20200418 - creation
+ -->
+
+<style>
+
+  :root{
+    --width-window: 100px;
+    --height-window: 100px;
+    --thickness-window:5px;
+    --window-color: #1b1a1a;
+    --window-bg-color: #99B2B7;
+  }
+
+  body {
+      width: 100%;
+      height: 100%;
+      background: #111;
+      box-sizing: border-box;
+    }
+
+  .window{
+      height: var(--height-window);
+      width: var(--width-window);
+      box-sizing: border-box;
+  }
+
+  .blinds_container, .panes_container{
+      height: var(--height-window);
+      width: var(--width-window);
+      position:absolute;
+      top:0;
+      left:0;
+  }
+
+  .blinds_container {
+    z-index:5;
+  }
+
+  .panes_container {
+    z-index:1;
+    background: var(--window-color);
+  }
+
+  .blinds {
+      height: calc(var(--height-window) - var(--thickness-window));
+      width: calc(var(--width-window) - var(--thickness-window) - var(--thickness-window));
+      background: repeating-linear-gradient(#00416A 20%, #E4E5E6 20%, #111 25%, #00416A 20%) no-repeat 50% 50% / 100% 100%;
+      float: left;
+      transition: all 1000ms ease;
+    }
+
+  .left-edge {
+    height: calc(var(--height-window) - var(--thickness-window));
+    background: #1b1a1a;
+    width: var(--thickness-window);
+    float: left;
+    position: relative;
+  }
+
+  .right-edge {
+    height: calc(var(--height-window) - var(--thickness-window));
+    background: var(--window-color);
+    width: var(--thickness-window);
+    float: right;
+    position: relative;
+  }
+  .top-edge {
+    height: var(--thickness-window);
+    background: var(--window-color);
+    width: var(--width-window);
+    float: left;
+    position: relative;
+  }
+  .bottom-edge {
+    height: var(--thickness-window);
+    background: var(--window-color);
+    width: var(--width-window);
+    float: left;
+    position: relative;
+  }
+
+  @media (max-width: calc(var(--width-window) - var(--thickness-window) - var(--thickness-window))) {
+    .blinds {
+      max-width: 360px;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+  }
+
+  input[type=checkbox] {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    opacity: 0;
+  }
+
+  input[type=checkbox]:checked ~ div.blinds {
+    top: 0px;
+    height: 0px;
+    transition: all 1000ms ease-out;
+  }
+
+  .pane {
+			float: left;
+			width: 46%;
+			height: 46%;
+			margin: 2%;
+			background: var(--window-bg-color);
+		}
+
+</style>
+
+<div class="window">
+  <div class="blinds_container">
+    <input type="checkbox" />
+    <div class="top-edge"></div>
+    <div class="left-edge"></div>
+    <div class="blinds"></div>
+    <div class="right-edge"></div>
+    <div class="bottom-edge"></div>
+  </div>
+  <div class="panes_container">
+    <div class="pane"></div>
+  	<div class="pane"></div>
+  	<div class="pane"></div>
+    <div class="pane"></div>
+  </div>
+</div>
