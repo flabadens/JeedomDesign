@@ -1,0 +1,74 @@
+<!--
+  Widget name : multi_type_switch_mmi
+  Author : geqr
+  Website : www.ma-maison-intelligente.fr
+  Tutorial :
+  Last Update : 20200414 - creation
+ -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+<div id='button-#id#'
+     class="toggle cursor cmd tooltips cmd-widget"
+     onClick="jeedom.cmd.execute({id: '#id#'});"
+     data-type="action" data-cmd_id="#id#" data-cmd_uid="#uid#">
+
+  <div class="button">
+    <i id="icon-#id#" class="fa fa-lock"></i>
+  </div>
+</div>
+
+<style type="text/css">
+
+  body {
+    background-color:black;
+  }
+
+  --root: {
+    --button_width: 60px;
+    --border_size: 3px;
+    --button_color: white;
+    --icon_size:30px;
+  }
+
+  .fa {
+    line-height:55px;
+  }
+
+  .button {
+    box-sizing: border-box;
+    border: var(--border_size) solid var(--button_color);
+    border-radius: var(--button_width);
+    color: var(--button_color);
+    width: var(--button_width);
+    height: var(--button_width);
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    font-size: var(--icon_size);
+    margin: 0;
+    font-weight:400;
+  }
+</style>
+
+<script type="text/javascript">
+
+  var buttonSize = is_numeric('#taille#') ? parseFloat('#taille#'):60;
+  var borderSize = is_numeric('#taille_bordure#') ? parseFloat('#taille_bordure#'):3;
+  var iconSize = is_numeric('#taille_icone#') ? parseFloat('#taille_icone#'):30;
+  var color = ('#couleur#' !='#'+'couleur#') ? "#couleur#":"white";
+
+  var type = ('#type#' !='#'+'type#') ? "#type#":"fa";
+  var icon = ('#icone#'!='#'+'icone#') ? "#icone#" : "fa-lock";
+
+
+  var root = document.querySelector(':root') ;
+  var rootStyles = getComputedStyle(root) ;
+  rootStyles.setProperty('--button_width',buttonSize+"px");
+  rootStyles.setProperty('--border_size',borderSize+"px");
+  rootStyles.setProperty('--button_color',color);
+  rootStyles.setProperty('--icon_size',iconSize+"px");
+
+  $("#icon-#id#").removeClass().addClass(type+" "+icon);
+
+</script>
