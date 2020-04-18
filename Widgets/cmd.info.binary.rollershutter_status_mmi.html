@@ -93,7 +93,7 @@
     }
   }
 
-  input[type=checkbox] {
+  .window input[type=checkbox] {
     position: absolute;
     cursor: pointer;
     width: 100%;
@@ -102,7 +102,7 @@
     opacity: 0;
   }
 
-  input[type=checkbox]:checked ~ div.blinds {
+  .window input[type=checkbox]:checked ~ div.blinds {
     top: 0px;
     height: 0px;
     transition: all 1000ms ease-out;
@@ -118,9 +118,9 @@
 
 </style>
 
-<div class="window">
+<div class="window cmd cmd-widget #history#" data-type="info" data-subtype="binary" data-template="badge" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
   <div class="blinds_container">
-    <input type="checkbox" />
+    <input id="check#id#" type="checkbox" />
     <div class="top-edge"></div>
     <div class="left-edge"></div>
     <div class="blinds"></div>
@@ -134,3 +134,19 @@
     <div class="pane"></div>
   </div>
 </div>
+
+<script>
+  jeedom.cmd.update['#id#'] = function(_options) {
+    var cmd = $('.cmd[data-cmd_id=#id#]');
+    var open = _options.display_value;
+
+    if (open == '1') {
+      document.getElementById('check#id#').checked = true;
+    } else {
+      document.getElementById('check#id#').checked = false;
+    }
+  }
+
+  jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+
+</script>
