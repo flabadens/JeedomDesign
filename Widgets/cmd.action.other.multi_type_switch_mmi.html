@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 <div id='button-#id#'
-     class="toggle cursor cmd tooltips cmd-widget"
+     class="toggle cursor cmd tooltips cmd-widget container-fluid"
      onClick="jeedom.cmd.execute({id: '#id#'});"
      data-type="action" data-cmd_id="#id#" data-cmd_uid="#uid#">
 
@@ -27,12 +27,13 @@
   --root: {
     --button_width: 60px;
     --border_size: 3px;
-    --button_color: white;
+    --button_color: grey;
     --icon_size:30px;
   }
 
   .fa {
     line-height:55px;
+    color: var(--button_color);
   }
 
   .button {
@@ -52,7 +53,6 @@
 </style>
 
 <script type="text/javascript">
-
   var buttonSize = is_numeric('#taille#') ? parseFloat('#taille#'):60;
   var borderSize = is_numeric('#taille_bordure#') ? parseFloat('#taille_bordure#'):3;
   var iconSize = is_numeric('#taille_icone#') ? parseFloat('#taille_icone#'):30;
@@ -62,13 +62,27 @@
   var icon = ('#icone#'!='#'+'icone#') ? "#icone#" : "fa-lock";
 
 
-  var root = document.querySelector(':root') ;
-  var rootStyles = getComputedStyle(root) ;
-  rootStyles.setProperty('--button_width',buttonSize+"px");
-  rootStyles.setProperty('--border_size',borderSize+"px");
-  rootStyles.setProperty('--button_color',color);
-  rootStyles.setProperty('--icon_size',iconSize+"px");
+  //var root = document.querySelector() ;
+  let rootStyle = document.documentElement;
+  rootStyle.style.setProperty('--button_width',buttonSize+"px");
+  rootStyle.style.setProperty('--border_size',borderSize+"px");
+  rootStyle.style.setProperty('--button_color',color);
+  rootStyle.style.setProperty('--icon_size',iconSize+"px");
 
   $("#icon-#id#").removeClass().addClass(type+" "+icon);
+
+  // Touch start
+  $("#button-#id#").on("mousedown", function() {
+    return $(this).css({
+      "transform": "scale(.9)"
+    });
+  });
+
+  // Touch end
+  $("#button-#id#").on("mouseup", function() {
+    return $(this).css({
+      "transform": "scale(1)"
+    });
+  });
 
 </script>
