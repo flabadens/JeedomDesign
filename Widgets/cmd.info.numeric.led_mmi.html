@@ -1,0 +1,88 @@
+<!--
+  Widget name : led_mmi
+  Author : geqr
+  Website : www.ma-maison-intelligente.fr
+  Tutorial : //TODO
+  Inspiration :
+  Last Update : 20200419 - creation
+ -->
+
+<style>
+
+  :root {
+    --color-1:#ff003b;
+    --color-2:#24E0FF;
+    --color-3:#ABFF00;
+	--size:25px;
+  }
+
+ .led-box {
+  height: var(--size);
+  margin: 10px 0;
+  float: left;
+}
+
+.led-1 {
+  margin: 0 auto;
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--color-1);
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 5px, var(--color-1) 0 2px 12px;
+}
+
+.led-2{
+  margin: 0 auto;
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--color-2);
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 5px, var(--color-2) 0 2px 12px;
+}
+
+.led-3{
+  margin: 0 auto;
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--color-3);
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 5px, var(--color-3) 0 2px 12px;
+}
+</style>
+
+<div class="window cmd cmd-widget #history#" data-type="info" data-subtype="binary" data-template="badge" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
+  <div class="led-box">
+    <div class="led"></div>
+  </div>
+</div>
+
+<script>
+
+  var couleur1 = ('#couleur-1#' !='#'+'couleur-1#') ? "#couleur-1#":"#ff003b";
+  var couleur2 = ('#couleur-2#' !='#'+'couleur-2#') ? "#couleur-2#":"#24E0FF";
+  var couleur3 = ('#couleur-3#' !='#'+'couleur-3#') ? "#couleur-3#":"#ABFF00";
+
+  let rootStyle = document.documentElement;
+  rootStyle.style.setProperty('--color-1',couleur1);
+  rootStyle.style.setProperty('--color-2',couleur2);
+  rootStyle.style.setProperty('--color-3',couleur3);
+
+  jeedom.cmd.update['#id#'] = function(_options) {
+    var cmd = $('.cmd[data-cmd_id=#id#]');
+    var percentage_value = _options.display_value;
+	console.log(percentage_value);
+  if (percentage_value >=0 && percentage_value<=20){
+    cmd.find('.led').removeClass('led-2 led-3');
+   	cmd.find('.led').addClass('led-1');
+  } else if (percentage_value >=21 && percentage_value<=59){
+    cmd.find('.led').removeClass('led-1 led-3');
+   	cmd.find('.led').addClass('led-2');
+  } else {
+  	cmd.find('.led').removeClass('led-1 led-2');
+    cmd.find('.led').addClass('led-3');
+    }
+  }
+
+  jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+
+</script>

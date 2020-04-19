@@ -1,0 +1,73 @@
+<!--
+  Widget name : led_mmi
+  Author : geqr
+  Website : www.ma-maison-intelligente.fr
+  Tutorial :
+  Inspiration :
+  Last Update : 20200419 - creation
+ -->
+<style>
+
+  :root {
+    --color-checked:#ABFF00;
+    --color-unchecked:#24E0FF;
+	--size:25px;
+  }
+
+ .led-box {
+  height: var(--size);
+  margin: 10px 0;
+  float: left;
+}
+
+.led-checked {
+  margin: 0 auto;
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--color-checked);
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 5px, var(--color-checked) 0 2px 12px;
+}
+
+.led-unchecked{
+  margin: 0 auto;
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--color-unchecked);
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 5px, var(--color-unchecked) 0 2px 12px;
+}
+</style>
+
+<div class="window cmd cmd-widget #history#" data-type="info" data-subtype="binary" data-template="badge" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
+  <div class="led-box">
+    <div class="led"></div>
+  </div>
+</div>
+
+<script>
+
+  var couleurOk = ('#couleur-ok#' !='#'+'couleur-ok#') ? "#couleur-ok#":"#ABFF00";
+  var couleurNok = ('#couleur-nok#' !='#'+'couleur-nok#') ? "#couleur-nok#":"#24E0FF";
+
+  console.log(couleurNok);
+  let rootStyle = document.documentElement;
+  rootStyle.style.setProperty('--color-checked',couleurOk);
+  rootStyle.style.setProperty('--color-unchecked',couleurNok);
+
+  jeedom.cmd.update['#id#'] = function(_options) {
+    var cmd = $('.cmd[data-cmd_id=#id#]');
+    var open = _options.display_value;
+
+    if (open == '1') {
+      cmd.find('.led').removeClass('led-unchecked');
+      cmd.find('.led').addClass('led-checked');
+    } else {
+      cmd.find('.led').removeClass('led-checked');
+      cmd.find('.led').addClass('led-unchecked');
+    }
+  }
+
+  jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+
+</script>
