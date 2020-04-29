@@ -4,99 +4,110 @@
   Author : geqr
   Website : www.ma-maison-intelligente.fr
   Tutorial : http://ma-maison-intelligente.fr/2020/04/cadres-dark-pour-design-jeedom/
-  Last Update : 2020047 - creation
+  Last Update : 20200429 - add of centered style 2 box
  */
 
-.content-box {
-  width:100%; 
-  height:100%;
-  border-radius: 5px;
-  box-shadow: rgba(0,0,0,.2) 0px 0px 10px 2px;
-  color: #D3D3D3;
-  font-family: Montserrat, Arial;
-  font-weight: normal;
-  overflow:hidden;
-  display:block;
-}
+ .content-box {
+   width:100%;
+   height:100%;
+   border-radius: 5px;
+   box-shadow: rgba(0,0,0,.2) 0px 0px 10px 2px;
+   color: #D3D3D3;
+   font-family: Montserrat, Arial;
+   font-weight: normal;
+   overflow:hidden;
+   display:block;
+ }
 
-.box-lower-section,
-.box-upper-section {
-  display: flex;
-} 
-.box-upper-section {
-  min-height: 45px;
-  line-height: 45px;
-  width: 100%;
-  background-color: #4e4e4e;
-  align-items: left;  
-  justify-content: left;
-}
-    
-.box-upper-section .fa, .box-upper-section .fab {
-  margin:0 10px;
-}
+ .box-lower-section,
+ .box-upper-section {
+   display: flex;
+ }
+ .box-upper-section {
+   min-height: 45px;
+   line-height: 45px;
+   width: 100%;
+   background-color: #4e4e4e;
+   align-items: left;
+   justify-content: left;
+ }
 
-.box-upper-section .fab {
-  font-size:20px;
-}
-    
-.box-lower-section{
-  height:100%;
-  width: 100%;
-  align-items: center;  
-  justify-content: center;
-  background-color: #4e4e4e;
-  opacity: 0.8;
-}
-    
-.divider
-{
-  position: relative;
-  margin-top: 0px;
-  height: 0px;
-}
-    
-.div-arrow-down:after
-{
-	content: "";
-	position: absolute;
-	z-index: 1;
-	top: -7px;
-	left: calc(50% - 7px);
-	width: 14px;
-	height: 14px;
-	transform: rotate(45deg);
-	background-color: #4e4e4e;
-}
+ .box-centered .fa {
+ 	position:absolute;
+   	top:10px;
+ }
 
-.light-box {
-  width:100%;
-  height:100%;
-  background-color: #4e4e4e;
-  border-radius: 5px;
-  box-shadow: rgba(0,0,0,.2) 0px 0px 10px 2px;
-  color: #D3D3D3;
-  font-weight: normal;
-  text-align: left;
-  overflow:auto;
-  display:block;
-  opacity:0.9;
-  font-family: Montserrat, Arial; 
-}
+ .box-centered .box-upper-section-title {
+   width:100%;
+   display: inline-block;
+   text-align:center;
+ }
 
-.light-box p {
-  border: 1px solid #999999;
-  border-radius: 3px;
-  padding: 0.3rem;
-  margin-left:20px;
-  margin-top:20px;
-  text-transform: uppercase;
-  font-size: 10px;
-  display:inline-block; 
-}
+ .box-upper-section .fa, .box-upper-section .fas, .box-upper-section .fab {
+   margin:0 10px;
+ }
 
-.fa-dark-round {
-  border-radius: 30px;
-  padding: 5px;
-  background: #333333;
-}
+ .box-upper-section .fab {
+   font-size:20px;
+ }
+
+ .box-lower-section{
+   height:100%;
+   width: 100%;
+   align-items: center;
+   justify-content: center;
+   background-color: #4e4e4e;
+   opacity: 0.8;
+ }
+
+ .divider
+ {
+   position: relative;
+   margin-top: 0px;
+   height: 0px;
+ }
+
+ .div-arrow-down:after
+ {
+ 	content: "";
+ 	position: absolute;
+ 	z-index: 1;
+ 	top: -7px;
+ 	left: calc(50% - 7px);
+ 	width: 14px;
+ 	height: 14px;
+ 	transform: rotate(45deg);
+ 	background-color: #4e4e4e;
+ }
+
+ .light-box {
+   width:100%;
+   height:100%;
+   background-color: #4e4e4e;
+   border-radius: 5px;
+   box-shadow: rgba(0,0,0,.2) 0px 0px 10px 2px;
+   color: #D3D3D3;
+   font-weight: normal;
+   text-align: left;
+   overflow:auto;
+   display:block;
+   opacity:0.9;
+   font-family: Montserrat, Arial;
+ }
+
+ .light-box p {
+   border: 1px solid #999999;
+   border-radius: 3px;
+   padding: 0.3rem;
+   margin-left:20px;
+   margin-top:20px;
+   text-transform: uppercase;
+   font-size: 10px;
+   display:inline-block;
+ }
+
+ .fa-dark-round {
+   border-radius: 30px;
+   padding: 5px;
+   background: #333333;
+ }
