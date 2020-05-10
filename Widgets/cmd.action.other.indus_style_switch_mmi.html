@@ -4,7 +4,7 @@
   Website : www.ma-maison-intelligente.fr
   Tutorial : http://ma-maison-intelligente.fr/2020/04/bouton-styel-indus-pour-votre-design-jeedom/
   Origin : https://codepen.io/khaoula12/pen/BEfyz
-  Last Update : 20200416 - creation
+  Last Update : 20200510 - checked accentuation
  -->
 <style>
 
@@ -251,6 +251,7 @@
 	height: 2em;
 	position: relative;
 	border-radius: 1em;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .switch-led-glow:before {
@@ -325,9 +326,12 @@
 	bottom: -5em;
 	border-top: 0.1em solid rgba(237,28,36,0.2);
 	border-bottom: 0.1em solid rgba(255,255,255,0.25);
-	-webkit-box-shadow: 0 0 3em rgb(237,28,36);
+	/*-webkit-box-shadow: 0 0 3em rgb(237,28,36);
 	-moz-box-shadow: 0 0 3em rgb(237,28,36);
-	box-shadow: 0 0 3em rgb(237,28,36);
+	box-shadow: 0 0 3em rgb(237,28,36);*/
+  -webkit-box-shadow: 0px 0px 30px 2px rgba(237,28,36,1);
+  -moz-box-shadow: 0px 0px 30px 2px rgba(237,28,36,1);
+  box-shadow: 0px 0px 30px 2px rgba(237,28,36,1);
 }
 
 .switch-led-red .switch-led-light {
@@ -372,9 +376,12 @@
 }
 
 .switch input:checked~.switch-led-green {
-	-webkit-box-shadow: 0 0 3em rgb(0,161,75);
+	/*-webkit-box-shadow: 0 0 3em rgb(0,161,75);
 	-moz-box-shadow: 0 0 3em rgb(0,161,75);
-	box-shadow: 0 0 3em rgb(0,161,75);
+	box-shadow: 0 0 3em rgb(0,161,75);*/
+  -webkit-box-shadow: 0px 0px 30px 2px rgba(0,161,75,1);
+  -moz-box-shadow: 0px 0px 30px 2px rgba(0,161,75,1);
+  box-shadow: 0px 0px 30px 2px rgba(0,161,75,1);
 }
 
 .switch input:checked~.switch-led-green .switch-led-glow {
@@ -390,8 +397,9 @@
 }
 
 .switch input:checked~.switch-led-red .switch-led-glow {
-	background: rgba(255, 255, 255, 0);
-	filter: alpha(opacity=0);
+	/*background: rgba(255, 255, 255, 0);*/
+  background: rgba(0, 0, 0, 0.3);
+	filter: alpha(opacity=0.3);
 }
 </style>
 
