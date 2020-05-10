@@ -1,0 +1,173 @@
+/*
+  Menu name : Slider Vertical
+  Author : geqr
+  Website : www.ma-maison-intelligente.fr
+  Tutorial : http://ma-maison-intelligente.fr/2020/04/un-menu-slider-pour-design-jeedom/
+	Origin : https://codepen.io/raptor5/pen/WxQvgw
+  Last Update : 20200425 - creation
+ */
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+html{
+font-size:100%}
+
+:root{
+  --height:64px;
+  --width:64px;
+  --background_color: #4e4e4e;
+  --color:#fff;
+  --font-size:1.5rem;
+}
+
+a.menu-link {
+  width: 100%;
+}
+
+.menu-opener, .menu-opener:hover, .menu-opener.active, .menu-opener-inner, .menu-opener-inner::before, .menu-opener-inner::after, .menu, .menu.active {
+  -webkit-transition: 250ms all;
+  transition: 250ms all;
+}
+
+.menu-opener {
+  cursor: pointer;
+  height: var(--height);
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 64px;
+}
+
+.menu-opener:hover, .menu-opener.active {
+  background: var(--background_color);
+}
+
+.menu-opener-inner {
+  background: var(--color);
+  height: .5rem;
+  margin-left: .75rem;
+  margin-top: 1.75rem;
+  width: 2.5rem;
+}
+.menu-opener-inner::before, .menu-opener-inner::after {
+  background: var(--color);
+  content: '';
+  display: block;
+  height: .5rem;
+  width: 2.5rem;
+}
+.menu-opener-inner::before {
+  -webkit-transform: translateY(-0.75rem);
+  -ms-transform: translateY(-0.75rem);
+  transform: translateY(-0.75rem);
+}
+.menu-opener-inner::after {
+  -webkit-transform: translateY(0.25rem);
+  -ms-transform: translateY(0.25rem);
+  transform: translateY(0.25rem);
+}
+.menu-opener-inner.active {
+  background: transparent;
+}
+.menu-opener-inner.active::before {
+  -webkit-transform: translateY(0rem) rotate(-45deg);
+  -ms-transform: translateY(0rem) rotate(-45deg);
+  transform: translateY(0rem) rotate(-45deg);
+}
+.menu-opener-inner.active::after {
+  -webkit-transform: translateY(-0.5rem) translateX(0rem) rotate(45deg);
+  -ms-transform: translateY(-0.5rem) translateX(0rem) rotate(45deg);
+  transform: translateY(-0.5rem) translateX(0rem) rotate(45deg);
+}
+
+.menu {
+  background: var(--background_color);
+  color: transparent;
+  height: var(--height);
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 0rem;
+  z-index: -1;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+}
+
+.menu *,
+.menu *::before,
+.menu *::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.menu.active {
+  width: -webkit-calc(100% - 2rem);
+  width: calc(100% - 2rem);
+}
+
+.menu.active a.menu-link li {
+color: var(--color);
+}
+
+.menu-inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  margin-left: 4rem;
+  padding: 0;
+}
+
+.menu-link {
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  font-size: var(--font-size);
+  font-weight: 100;
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.menu-link li {
+  margin: auto;
+    color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    height: auto;
+  }
+  .menu-inner {
+    display: block;
+  }
+  .menu-link {
+    padding: 10px 0;
+    font-size: 1.2em;
+  }
+  .menu.active {
+    width: -webkit-calc(100% - 0.5rem);
+    width: calc(100% - 0.5rem);
+  }
+}
