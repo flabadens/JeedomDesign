@@ -1,0 +1,117 @@
+<!--
+  Widget name : android_switch_mmi
+  Author : geqr
+  Website : www.ma-maison-intelligente.fr
+  Tutorial :
+  Origin: https://codepen.io/riogrande/pen/iFcvy
+  Last Update : 20200511 - creation
+ -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="cursor cmd tooltips cmd-widget"
+  data-type="action" data-cmd_id="#id#" data-cmd_uid="#uid#"
+  onClick="jeedom.cmd.execute({id: '#id#'});">
+  <a class="android-btn" href="#"><i class="fas fa-house-user"></i></a>
+</div>
+
+<style type="text/css">
+  .cmd[data-cmd_uid=#uid#]>.android-btn {
+    padding: 40px 30px 30px 30px;
+    margin: 0 1px 0 0;
+    text-decoration: none;
+    text-align: center;
+    color: #e8e8ea !important;
+    cursor: pointer;
+    background: #2c3e50;
+    border-bottom: 10px solid #34495e;
+    transition-property: border-bottom .6s linear 0s;
+    -moz-transition: border-bottom .6s linear 0s;
+    -webkit-transition: border-bottom .6s linear 0s;
+    -o-transition: border-bottom .6s linear 0s;
+    font-size: 25px;
+  }
+
+  .cmd[data-cmd_uid=#uid#] >.android-btn.active {
+    border-bottom: 10px solid #2ecc71;
+    color: #2ecc71 !important;
+  }
+
+  .button-group-navigation {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    zoom: 1;
+    background: #7f8c8d;
+  }
+
+  .button-group-navigation .android-btn {
+    float: left;
+    margin-left: -4px;
+  }
+
+  .button-group-navigation>.android-btn:first-child,
+  .button-group-navigation:first-child .btn {
+    margin-left: 0;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  .button-group-navigation>.android-btn:last-child,
+  .button-group-navigation:last-child>.btn {
+    margin-right: 0;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+</style>
+
+<script type="text/javascript">
+
+    $('.cmd[data-cmd_uid=#uid#] > a.android-btn').click(function() {
+      $(this).toggleClass("active");
+    });
+
+    $('.cmd[data-cmd_uid=#uid#] > a.android-btn').each(function() {
+    	var parent = $(this).parent().get(0);
+
+      if (!$(parent).hasClass('button-group-navigation')) {
+        $(parent).addClass("button-group-navigation");
+      }
+    });
+
+
+
+
+  jeedom.cmd.update['#id#'] = function(_options){
+
+  var parent = $('.cmd[data-cmd_uid=#uid#]').parent().get(0);
+  if (_options.display_value == '1' || _options.display_value == 1 || _options.display_value == '99' || _options.display_value == 99 || _options.display_value == 'on') {
+      $('.cmd[data-cmd_uid=#uid#] > a.android-btn').addClass("active");
+      if (jeedom.cmd.normalizeName('#name#') == 'on') {
+        $(parent).hide();
+      }else{
+        $(parent).show();
+      }
+    } else {
+      if ($('.cmd[data-cmd_uid=#uid#] > a.android-btn').hasClass('active')) {
+        $('.cmd[data-cmd_uid=#uid#] > a.android-btn').removeClass('active');
+      }
+      if (jeedom.cmd.normalizeName('#name#') == 'off') {
+        $(parent).hide();
+      }else{
+        $(parent).show();
+      }
+    }
+  }
+  jeedom.cmd.update['#id#']({display_value:'#state#'});
+</script>
