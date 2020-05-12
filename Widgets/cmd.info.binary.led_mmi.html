@@ -11,7 +11,7 @@
   :root {
     --color-checked:#ABFF00;
     --color-unchecked:#24E0FF;
-	--size:25px;
+	  --size:25px;
   }
 
  .led-box {
@@ -47,13 +47,21 @@
 
 <script>
 
-  var couleurOk = ('#couleur-ok#' !='#'+'couleur-ok#') ? "#couleur-ok#":"#ABFF00";
-  var couleurNok = ('#couleur-nok#' !='#'+'couleur-nok#') ? "#couleur-nok#":"#24E0FF";
+  var couleurOk = ('#couleur-ok#' !='#'+'couleur-ok#') ? "#couleur-ok#":0;
+  var couleurNok = ('#couleur-nok#' !='#'+'couleur-nok#') ? "#couleur-nok#":0;
+  var taille = is_numeric('#taille#') ? parseFloat('#taille#'):0;
 
-  console.log(couleurNok);
-  let rootStyle = document.documentElement;
-  rootStyle.style.setProperty('--color-checked',couleurOk);
-  rootStyle.style.setProperty('--color-unchecked',couleurNok);
+  if (couleurOk!= 0){
+    $(".cmd[data-cmd_id=#id#] .led-checked").css("background-color", couleurOk);
+  }
+  if (couleurNok!= 0){
+    $(".cmd[data-cmd_id=#id#] .led-unchecked").css("background-color", couleurNok);
+  }
+  if (taille!= 0){
+    $(".cmd[data-cmd_id=#id#] .led-checked, .cmd[data-cmd_id=#id#] .led-unchecked").css("width", taille+"px");
+    $(".cmd[data-cmd_id=#id#] .led-checked, .cmd[data-cmd_id=#id#] .led-unchecked").css("height", taille+"px");
+    $(".cmd[data-cmd_id=#id#] .led-box").css("height", taille+"px");
+  }
 
   jeedom.cmd.update['#id#'] = function(_options) {
     var cmd = $('.cmd[data-cmd_id=#id#]');
