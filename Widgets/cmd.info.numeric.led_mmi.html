@@ -13,7 +13,7 @@
     --color-1:#ff003b;
     --color-2:#24E0FF;
     --color-3:#ABFF00;
-	--size:25px;
+	  --size:25px;
   }
 
  .led-box {
@@ -58,14 +58,25 @@
 
 <script>
 
-  var couleur1 = ('#couleur-1#' !='#'+'couleur-1#') ? "#couleur-1#":"#ff003b";
-  var couleur2 = ('#couleur-2#' !='#'+'couleur-2#') ? "#couleur-2#":"#24E0FF";
-  var couleur3 = ('#couleur-3#' !='#'+'couleur-3#') ? "#couleur-3#":"#ABFF00";
+  var couleur1 = ('#couleur-1#' !='#'+'couleur-1#') ? "#couleur-1#":0;
+  var couleur2 = ('#couleur-2#' !='#'+'couleur-2#') ? "#couleur-2#":0;
+  var couleur3 = ('#couleur-3#' !='#'+'couleur-3#') ? "#couleur-3#":0;
+  var taille = is_numeric('#taille#') ? parseFloat('#taille#'):0;
 
-  let rootStyle = document.documentElement;
-  rootStyle.style.setProperty('--color-1',couleur1);
-  rootStyle.style.setProperty('--color-2',couleur2);
-  rootStyle.style.setProperty('--color-3',couleur3);
+  if (couleur1!= 0){
+    $(".cmd[data-cmd_id=#id#] .led-1").css("background-color", couleur1);
+  }
+  if (couleur2!= 0){
+    $(".cmd[data-cmd_id=#id#] .led-2").css("background-color", couleur2);
+  }
+  if (couleur3!= 0){
+    $(".cmd[data-cmd_id=#id#] .led-3").css("background-color", couleur3);
+  }
+  if (taille!= 0){
+    $(".cmd[data-cmd_id=#id#] .led-1, .cmd[data-cmd_id=#id#] .led-2, .cmd[data-cmd_id=#id#] .led-3").css("width", taille+"px");
+    $(".cmd[data-cmd_id=#id#] .led-1, .cmd[data-cmd_id=#id#] .led-2, .cmd[data-cmd_id=#id#] .led-3").css("height", taille+"px");
+    $(".cmd[data-cmd_id=#id#] .led-box").css("height", taille+"px");
+  }
 
   jeedom.cmd.update['#id#'] = function(_options) {
     var cmd = $('.cmd[data-cmd_id=#id#]');
