@@ -12,29 +12,39 @@
 <div class="cursor cmd tooltips cmd-widget"
   data-type="action" data-cmd_id="#id#" data-cmd_uid="#uid#"
   onClick="jeedom.cmd.execute({id: '#id#'});">
-  <a class="android-btn" href="#"><i class="fas fa-house-user"></i></a>
+  <a class="android-btn" href="#">
+    <i class="fas fa-house-user"></i>
+  </a>
 </div>
 
 <style type="text/css">
+
+  :root {
+      --android_switch_background: #2c3e50;
+      --android_switch_color: #e8e8ea;
+      --android_switch_highlighted_color: #2ecc71;
+      --android_switch_icon_size: 25px;
+    }
+
   .cmd[data-cmd_uid=#uid#]>.android-btn {
     padding: 40px 30px 30px 30px;
     margin: 0 1px 0 0;
     text-decoration: none;
     text-align: center;
-    color: #e8e8ea !important;
+    color: var(--android_switch_color) !important;
     cursor: pointer;
-    background: #2c3e50;
+    background: var(--android_switch_background);
     border-bottom: 10px solid #34495e;
     transition-property: border-bottom .6s linear 0s;
     -moz-transition: border-bottom .6s linear 0s;
     -webkit-transition: border-bottom .6s linear 0s;
     -o-transition: border-bottom .6s linear 0s;
-    font-size: 25px;
+    font-size: var(--android_switch_icon_size);
   }
 
   .cmd[data-cmd_uid=#uid#] >.android-btn.active {
-    border-bottom: 10px solid #2ecc71;
-    color: #2ecc71 !important;
+    border-bottom: 10px solid var(--android_switch_highlighted_color);
+    color: var(--android_switch_highlighted_color) !important;
   }
 
   .button-group-navigation {
@@ -89,13 +99,9 @@
       }
     });
 
-
-
-
   jeedom.cmd.update['#id#'] = function(_options){
-
-  var parent = $('.cmd[data-cmd_uid=#uid#]').parent().get(0);
-  if (_options.display_value == '1' || _options.display_value == 1 || _options.display_value == '99' || _options.display_value == 99 || _options.display_value == 'on') {
+    var parent = $('.cmd[data-cmd_uid=#uid#]').parent().get(0);
+    if (_options.display_value == '1' || _options.display_value == 1 || _options.display_value == '99' || _options.display_value == '99' || _options.display_value == 'on') {
       $('.cmd[data-cmd_uid=#uid#] > a.android-btn').addClass("active");
       if (jeedom.cmd.normalizeName('#name#') == 'on') {
         $(parent).hide();
