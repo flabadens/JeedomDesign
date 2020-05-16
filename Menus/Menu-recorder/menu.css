@@ -6,13 +6,8 @@
   Last Update : 20200511 - creation
  */
 
-body{
-  background-color:rgb(74, 74, 74);
-  background: url("http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/noisy_net.png") repeat scroll center center rgb(74, 74, 74);
-}
-
 :root {
-  --recorder-hover-color:yellow;
+  --recorder-hover-color:red;
   --recorder-bg-color:linear-gradient(#3D4246, #24282B);
   --recorder-button-bg-color:linear-gradient(#44494F, #2F3237);
   --recorder-active-color:#6c6d77;
@@ -71,6 +66,14 @@ body{
 .recorder ul li i {
   margin-top: 20px;
   font-size: 24px;
+}
+
+.recorder ul li a, .recorder ul li a:hover {
+  color: var(--recorder-icon-color) !important;
+}
+
+.recorder ul li:active a, .recorder ul li.active a {
+  color: var(--recorder-active-color) !important;
 }
 
 .recorder ul li:active, .recorder ul li.active {
